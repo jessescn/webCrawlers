@@ -1,0 +1,15 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+scrapy = "*"
+
+[requires]
+python_version = "3.6"
+
+[scripts]
+crawler = "scrapy runspider aosFatos.py -s HTTPCACHE_ENABLED=1 -o quotes.csv"
