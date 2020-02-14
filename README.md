@@ -8,4 +8,5 @@ webCrawlers is a compilation repo with some examples of data crawling with diffe
  - [Controle Acadêmico](https://github.com/jessescn/ControleAcademico)
  - [CoinMarketCap](https://github.com/jessescn/webCrawlers/tree/master/coinmarketcap)  
  - [Crypto API](https://github.com/jessescn/crypto-api)
+ - [turmasOfertadas](https://github.com/jessescn/webCrawlers/tree/master/turmasOfertadas)
 

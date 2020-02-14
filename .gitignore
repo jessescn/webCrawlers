@@ -1,2 +1,4 @@
 .vscode
 .scrapy
+__pycache__
+.env
