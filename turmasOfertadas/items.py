@@ -1,6 +1,6 @@
 import scrapy
 
-class ClasseItem(scrapy.Item):
+class SubjectItem(scrapy.Item):
 
     periodo = scrapy.Field()
     codigo = scrapy.Field()

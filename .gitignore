@@ -2,3 +2,4 @@
 .scrapy
 __pycache__
 .env
+turmasOfertadas/*.json

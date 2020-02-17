@@ -1,11 +1,11 @@
 import scrapy
-from items import ClasseItem
+from items import SubjectItem
 
 def authentation_failed(response):
     """ Função para checar se a autenticação falhou """
     return response.css('div.alert p::text').get() == 'Erro'
 
-class TurmasSpider(scrapy.Spider):
+class SubjectsSpider(scrapy.Spider):
 
     name = 'turmas'
     start_urls = ['https://pre.ufcg.edu.br:8443/ControleAcademicoOnline/Controlador?command=Home']
@@ -27,12 +27,12 @@ class TurmasSpider(scrapy.Spider):
 
         if not authentation_failed(response):
             yield scrapy.Request(response.urljoin('?command=AlunoDisciplinasOfertadas'),
-                                                     callback=self.get_classes)
+                                                     callback=self.get_subjects)
         else:
             print('\nCredenciais inválidas!\n')
 
 
-    def get_classes(self, response):
+    def get_subjects(self, response):
 
         table = response.xpath('//table[@id="tabOferta"]/tbody/tr')
         for line in table:
@@ -42,7 +42,7 @@ class TurmasSpider(scrapy.Spider):
 
             subjectCode , subjectIndex = data[1].split(' - ')
 
-            dataClass = ClasseItem(
+            subject = SubjectItem(
                                 periodo=data[0],
                                 codigo=subjectCode,
                                 turma=subjectIndex,
@@ -50,6 +50,6 @@ class TurmasSpider(scrapy.Spider):
                                 horarios=[data[3], data[4]],
                                 oferta=data[-1])
 
-            self.items.append(dataClass)
+            self.items.append(subject)
 
-            yield  dataClass
+            yield  subject
